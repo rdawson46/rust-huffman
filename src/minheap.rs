@@ -62,12 +62,13 @@ impl MinHeap {
         .collect();
 
 
-        // FIX: figure out how to remove this later
-        nodes.par_sort_by(|x, y| {
-            y.get_count().cmp(&x.get_count())
-        });
 
         while nodes.len() > 1 {
+            // FIX: figure out how to remove this later
+            nodes.par_sort_by(|x, y| {
+                y.get_count().cmp(&x.get_count())
+            });
+
             // find two min
             // since min at end pop last 2
             let min1 = nodes.pop().unwrap();
